@@ -19,7 +19,8 @@ export const generateToken = (res: Response, user: User, message: string) => {
         res.status(200)
             .cookie("token", token, {
                 httpOnly: true,
-                sameSite: "strict",
+                secure: process.env.NODE_ENV === "production", // true на Render (https)
+                sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
                 maxAge: 24 * 60 * 60 * 1000,
             })
             .json({
