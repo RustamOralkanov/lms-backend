@@ -6,7 +6,6 @@ import userRoute from "./routes/user.route";
 import courseRoute from "./routes/course.route";
 import mediaRoute from "./routes/media.route";
 import progressRoute from "./routes/courseProgress.route";
-// purchase flow removed
 import mongoose from "mongoose";
 
 import cors from "cors";
@@ -31,7 +30,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser());
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: "http://localhost:7000",
         credentials: true,
     })
 );
@@ -84,7 +83,5 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
     console.log(`Database ready state: ${mongoose.connection.readyState}`);
-    console.log(
-        `Environment variables loaded: SECRET_KEY=${!!process.env.SECRET_KEY}, MONGO_URI=${!!process.env.MONGO_URI}`
-    );
+    console.log(`Environment variables loaded: SECRET_KEY=${!!process.env.SECRET_KEY}, MONGO_URI=${!!process.env.MONGO_URI}`);
 });
