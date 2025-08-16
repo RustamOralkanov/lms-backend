@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "dev": "nodemon ./src/index.ts",
-        "start": "node ./src/index.ts",
+        "start": "ts-node ./src/index.ts",
+        "build": "tsc",
+        "start:prod": "node ./dist/index.js",
         "create-indexes": "ts-node ./src/database/createIndexes.ts",
         "check-env": "node check-env.js",
         "test-api": "node test-api.js"
